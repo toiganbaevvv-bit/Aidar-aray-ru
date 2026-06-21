@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght=400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         @font-face {
@@ -35,23 +35,20 @@
             mix-blend-mode: multiply; 
         }
 
-        
         .flower {
             position: absolute;
-            width: 120px; /* Уменьшили размер */
+            width: 120px; 
             max-width: 30vw;
             z-index: 0;
             pointer-events: none;
         }
 
-        
-        .f1 { top: 0px; right: -10px; } 
+        .f1 { top: 40px; right: -10px; } 
         .f2 { top: 42%; left: -10px; }   
-        .f3 { bottom: 0px; right: -10px; } 
+        .f3 { bottom: -10px; right: -10px; } 
         .f4 { top: 20px; left: -10px; } 
-        .f5 { bottom: 340px; right: -10px; } 
+        .f5 { bottom: 100px; right: -10px; } 
 
-     
         #envelope-screen {
             position: fixed;
             inset: 0;
@@ -62,13 +59,14 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            transition: opacity 1.2s ease, visibility 1.2s ease;
+            transition: transform 1.2s cubic-bezier(0.64, 0, 0.23, 1), opacity 1.2s ease;
         }
 
         .envelope-wrapper {
             cursor: pointer;
             margin-top: 20px;
             animation: floatEnvelope 3s ease-in-out infinite;
+            transition: transform 0.6s ease, opacity 0.6s ease;
         }
 
         .envelope {
@@ -117,7 +115,6 @@
             transition: opacity 1.5s ease;
         }
 
-       
         .hero-section {
             position: relative;
             height: 100vh;
@@ -178,19 +175,20 @@
         }
 
         .bottom-date {
-            font-size: 22px;
+            font-family: 'Konigsberg', serif; /* ПРИМЕНИЛИ ШРИФТ KÖNIGSBERG */
+            font-size: 24px; 
             letter-spacing: 4px;
             color: #ffffff;
-            font-weight: 500;
+            font-weight: normal;
             margin-top: 45px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-            border-top: 1px solid rgba(255, 255, 255, 0.7);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            /* Оставляем ваши красивые линии */
+            border-top: 1px solid rgba(255, 255, 255, 0.7); 
             border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-            padding: 12px 20px;
+            padding: 10px 25px;
             display: inline-block;
         }
 
-       
         .music-player {
             position: fixed;
             bottom: 30px;
@@ -226,7 +224,6 @@
             display: none;
         }
 
-        
         .about-section, .timing-section, .form-section {
             position: relative;
             overflow: hidden;
@@ -239,7 +236,7 @@
 
         .title-script {
             font-family: 'AnastasiaScript', cursive;
-            font-size: 65px;
+            font-size: 60px;
             color: #8b6b4a;
             margin-bottom: 25px;
             position: relative;
@@ -290,7 +287,46 @@
             box-shadow: 0 15px 35px rgba(176, 139, 97, 0.4);
         }
 
-       
+        /* --- ТАЙМЕР ОТСЧЕТА --- */
+        .countdown-wrapper {
+            margin: 60px auto 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .time-box {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(176, 139, 97, 0.3);
+            border-radius: 12px;
+            width: 75px;
+            height: 85px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(139, 107, 74, 0.08);
+        }
+        .time-box span {
+            font-size: 32px;
+            font-weight: 600;
+            color: #8b6b4a;
+            line-height: 1.1;
+        }
+        .time-box p {
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #5f5247;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* АНКЕТА */
         .guest-form {
             max-width: 500px;
             margin: 0 auto;
@@ -393,7 +429,6 @@
             box-shadow: 0 8px 20px rgba(139, 107, 74, 0.2);
         }
 
-        
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -404,7 +439,6 @@
             transform: translateY(0);
         }
 
-        
         .flower-left {
             opacity: 0;
             transform: scaleX(-1) translateY(60px);
@@ -425,6 +459,12 @@
             transform: translateY(0);
         }
 
+@font-face {
+            font-family: 'Konigsberg';
+            src: url('KonigsbergDemo.ttf') format('truetype'); /* Если у вас файл .otf, напишите KonigsbergDemo.otf */
+            font-weight: normal;
+            font-style: normal;
+        }
         @media (max-width: 480px) {
             .envelope-names { font-size: 56px; }
             .envelope { width: 260px; }
@@ -436,12 +476,18 @@
             .guest-form { padding: 25px 20px; }
             .about-section, .timing-section, .form-section { padding: 80px 15px; }
             
-            .flower { width: 70px; } 
+            .flower { width: 90px; } 
             
             .music-player {
                 bottom: 20px;
                 right: 20px;
             }
+
+            .timer { gap: 8px; }
+            .time-box { width: 65px; height: 75px; }
+            .time-box span { font-size: 26px; }
+            .time-box p { font-size: 11px; }
+			
         }
     </style>
 </head>
@@ -452,11 +498,10 @@
         <div class="envelope-names">Айдар & Арайлым</div>
         <div class="envelope-wrapper" id="openInviteBtn">
             <img src="convert.png" alt="Конверт" class="envelope blend-img">
-            <p class="open-text">Нажмите, чтобы открыть</p>
+            <p class="open-text">Нажмите для открытие</p>
         </div>
     </div>
 
-    
     <div class="music-player">
         <audio id="bgMusic" loop>
             <source src="music.mp3" type="audio/mpeg">
@@ -483,23 +528,20 @@
                     Айдар<br><span>&</span><br>Арайлым
                 </h1>
 
-                <div class="bottom-date reveal">26.08.2026</div>
+                <div class="bottom-date reveal">26 • 08 • 2026</div>
             </div>
         </section>
 
         <section class="about-section">
-            
             <img src="right.png" class="flower f1 flower-right" alt="flower">
-           
             <img src="right.png" class="flower f2 flower-left" alt="flower">
-            
             <img src="right.png" class="flower f3 flower-right" alt="flower">
 
             <h2 class="title-script reveal">Дорогие гости!</h2>
-            <p class="description-text reveal">
-              <br>
-                Приглашаем Вас разделить с нами радость особенного для нас события и стать частью нашей семейной истории!
-            </p>
+
+<p class="description-text balanced-text reveal">
+    Приглашаем Вас разделить с нами радость особенного для нас события и стать частью нашей семейной истории!
+</p>
             
             <img src="birds.png" alt="Голуби" class="birds blend-img reveal">
             <p class="description-text reveal">
@@ -507,29 +549,27 @@
                  в одну историю, наполненную любовью, теплом и счастьем.
             </p>
             
-            <p class="couple-name reveal" style="color: #8b6b4a; font-size: 60px; font-weight: 600;">26.08.2026 </p>
+            <p class="couple-name reveal" style="color: #8b6b4a; font-size: 35px; font-weight: 600;">26.08.2026</p>
             
-
+         
         </section>
 
         <section class="timing-section">
-            
-            <h2 class="title-script reveal">Дата мероприятия</h2>
+            <h2 class="title-script reveal">Дата мероприятия:</h2>
             <div class="timing-item reveal">
                 <img src="date.png" alt="Дата" class="blend-img" style="width: 100%; max-width: 380px;">
             </div>
             <div class="timing-item reveal">
-                <p class="description-text" style="font-size: 24px; font-weight: 600;">Начало мероприятия 18:00</p>
+                <p class="description-text" style="font-size: 32px; font-weight: 600;">Начало мероприятия 18:00</p>
             </div>
             <h3 class="title-script reveal" style="font-size: 44px;">Свадебная программа:</h3>
-			<img src="program.png" alt="Локация" class="blend-img reveal" style="width: 400px; margin-bottom:20	px;"> <br><br>
-			
-		
-            <img src="point.png" alt="Локация" class="blend-img reveal" style="width: 100px; margin-bottom: 20px;">
+            <img src="progran.png" alt="Локация" class="blend-img reveal" style="width: 400px; margin-bottom:20px;"> <br><br>
             
-            <h3 class="title-script reveal" style="font-size: 44px;"> Место проведения:</h3>
+            <img src="point.png" alt="Локация" class="blend-img reveal" style="width: 110px; margin-bottom: 20px;">
+            
+            <h3 class="title-script reveal" style="font-size: 44px;">Место проведения:</h3>
             <p class="description-text reveal">
-                Город Кызылорда<br>
+               Город Кызылорда<br>
                 Ресторан ОРДА <br>
                 Проспект Астана 76
             </p>
@@ -540,6 +580,7 @@
         </section>
 
         <section class="form-section">
+                    
           
             <img src="right.png" class="flower f4 flower-left" alt="flower">
            
@@ -589,32 +630,87 @@
                  Инициаторы торжества:<br>Асқар - Сақыпжамал
             </p>
             <p class="description-text reveal" style="margin-top: 15px;">Мы будем рады видеть вас <br>на нашей свадьбе!</p>
+        
+            <div class="countdown-wrapper reveal" style="margin-top: 50px;">
+                <h3 class="title-script" style="font-size: 46px; margin-bottom: 10px;">До свадьбы осталось:</h3>
+                <div class="timer">
+                    <div class="time-box"><span id="days">00</span><p>Дней</p></div>
+                    <div class="time-box"><span id="hours">00</span><p>Часов</p></div>
+                    <div class="time-box"><span id="minutes">00</span><p>Минут</p></div>
+                    <div class="time-box"><span id="seconds">00</span><p>Секунд</p></div>
+                </div>
+            </div>
+
+
         </section>
 
+            </div>
     </div>
 
     <script>
+        // ЛОГИКА ОТКРЫТИЯ С АНИМАЦИЕЙ И АВТОСКРОЛЛОМ
         document.getElementById("openInviteBtn").addEventListener("click", () => {
             const envelopeScreen = document.getElementById("envelope-screen");
+            const wrapper = document.querySelector(".envelope-wrapper");
             const mainContent = document.getElementById("main-content");
             const music = document.getElementById("bgMusic");
+            const video = document.querySelector(".bg-video");
             
-            envelopeScreen.style.opacity = "0";
-            envelopeScreen.style.visibility = "hidden";
+            // 1. Анимация конверта (увеличивается и исчезает)
+            wrapper.style.transform = "scale(1.2) translateY(-30px)";
+            wrapper.style.opacity = "0";
             
+            // 2. Анимация экрана (уезжает вверх)
+            setTimeout(() => {
+                envelopeScreen.style.transform = "translateY(-100vh)";
+                envelopeScreen.style.opacity = "0";
+            }, 300);
+            
+            // 3. Показываем сайт и ждем перед скроллом
             setTimeout(() => {
                 envelopeScreen.style.display = "none";
                 mainContent.style.opacity = "1";
                 document.body.style.overflowY = "auto"; 
-            }, 1000);
+
+                // Ждем 3.5 секунды, затем запускаем автоскролл
+                setTimeout(() => {
+                    startSlowAutoScroll();
+                }, 2000);
+
+            }, 1200);
+
+            if (video) {
+                video.play().catch(() => console.log("Видео заблокировано политикой браузера"));
+            }
 
             if (music.paused) {
-                music.play().catch(() => console.log("Автовоспроизведение заблокировано"));
+                music.play().catch(() => console.log("Музыка заблокирована"));
                 document.querySelector(".music-icon").textContent = "❚❚";
                 document.querySelector(".music-text").textContent = "Музыка ойнап тұр";
                 document.getElementById("musicBtn").classList.add("playing");
             }
         });
+
+        // ФУНКЦИЯ МЕДЛЕННОГО АВТОСКРОЛЛА ДО КОНЦА
+        function startSlowAutoScroll() {
+            const scrollInterval = setInterval(() => {
+                // Проверяем, дошли ли мы до самого низа страницы (с погрешностью 2px)
+                const isBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2;
+                
+                if (isBottom) {
+                    clearInterval(scrollInterval);
+                } else {
+                    window.scrollBy(0, 1.5); // Скорость скролла: 1.5 пикселя за шаг
+                }
+            }, 15);
+
+            // Остановка при любом касании, скролле мыши или клике
+            const stopScroll = () => clearInterval(scrollInterval);
+            window.addEventListener('touchstart', stopScroll, { once: true });
+            window.addEventListener('wheel', stopScroll, { once: true });
+            window.addEventListener('mousedown', stopScroll, { once: true });
+            window.addEventListener('touchmove', stopScroll, { once: true });
+        }
 
         const musicBtn = document.getElementById("musicBtn");
         const music = document.getElementById("bgMusic");
@@ -635,7 +731,27 @@
             }
         });
 
-        
+        // ЛОГИКА ТАЙМЕРА (До 26 августа 2026, 18:00)
+        function updateCountdown() {
+            const targetDate = new Date("2026-08-26T18:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+                document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
         const revealElements = document.querySelectorAll(".reveal, .flower-left, .flower-right");
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
